@@ -1,0 +1,298 @@
+:root {
+    --primary: #0f172a;
+    --accent: #fb7185;
+    --bg: #fbfcff;
+    --card-bg: #ffffff;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+.font-outfit {
+    font-family: 'Outfit', sans-serif;
+}
+
+.font-playfair {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Custom Puzzle Styles */
+.puzzle-letter {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    user-select: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+@media (max-width: 640px) {
+    .puzzle-letter {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+}
+
+.puzzle-letter:hover {
+    background: #0f172a;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.1);
+}
+
+.puzzle-letter.selected {
+    opacity: 0.2;
+    pointer-events: none;
+    transform: scale(0.8);
+}
+
+.slot {
+    width: 60px;
+    height: 60px;
+    border: 2px dashed #e2e8f0;
+    background: #f8fafc;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 640px) {
+    .slot {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+}
+
+.slot.active {
+    border-color: #0f172a;
+    border-style: solid;
+    background: white;
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.animate-fadein {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes pulse-soft {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(251, 113, 133, 0.4);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(251, 113, 133, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(251, 113, 133, 0);
+    }
+}
+
+#music-btn.animate-pulse {
+    animation: pulse-soft 2s infinite;
+}
+
+#confession-modal .bg-rose-500 {
+    animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+#silhouette.revealed {
+    filter: none;
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Scroll Progress Overlay */
+#progress-bar {
+    transition: width 0.1s ease-out;
+}
+
+/* Typography & Layout Polish */
+section {
+    position: relative;
+    overflow: hidden;
+}
+
+h1,
+h2 {
+    letter-spacing: -0.03em;
+}
+
+footer {
+    border-top: 1px solid #f1f5f9;
+}
+
+/* Smooth Scrolling Overlay */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fbfcff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Floating Hearts Background */
+.floating-heart {
+    position: fixed;
+    bottom: -50px;
+    color: #ffb6c1;
+    /* Soft Pink */
+    font-size: 20px;
+    animation: floatUp 6s linear forwards;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Mobile Specific Optimizations */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    h1 {
+        font-size: 4rem !important;
+    }
+
+    h2 {
+        font-size: 2.5rem !important;
+    }
+
+    /* Narrow Timer Card on mobile */
+    #timer-section .max-w-4xl {
+        max-width: 90% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #timer-section .bg-white {
+        padding: 2.5rem 1.5rem !important;
+        /* Narrower padding */
+        border-radius: 2.5rem !important;
+    }
+
+    #counter {
+        gap: 2rem !important;
+    }
+
+    /* Adjust Hero Card padding on mobile */
+    .max-w-6xl.grid {
+        padding: 2rem 1.5rem !important;
+        gap: 2rem !important;
+    }
+
+    h1 {
+        font-size: 3.5rem !important;
+        /* Slightly smaller for better fit */
+        line-height: 1.1 !important;
+    }
+
+    /* Modal Scrollability on mobile */
+    #confession-modal .rounded-\[3rem\],
+    #confession-modal .bg-rose-500 {
+        border-radius: 2rem !important;
+        padding: 2rem !important;
+        max-height: 85vh !important;
+        overflow-y: auto !important;
+    }
+
+    #confession-text div {
+        font-size: 1.1rem !important;
+    }
+}
+
+/* Desktop Modal Scrollability */
+#confession-modal .bg-rose-500 {
+    max-height: 85vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+
+/* Ensure mobile nav is hidden on big screens */
+@media (min-width: 769px) {
+    nav.fixed.bottom-6 {
+        display: none;
+    }
+}
